@@ -1,28 +1,37 @@
 /**
  * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
+ * Theme based on gradient: linear-gradient(90deg, hsla(205, 46%, 10%, 1) 0%, hsla(191, 28%, 23%, 1) 50%, hsla(207, 41%, 27%, 1) 100%)
  */
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+// Gradient colors - Dark sophisticated blue-teal theme
+export const GradientColors = {
+  start: '#0E1C26',    // hsla(205, 46%, 10%, 1) - Deep navy blue
+  middle: '#2A454B',   // hsla(191, 28%, 23%, 1) - Teal-blue
+  end: '#2A454B',      // hsla(207, 41%, 27%, 1) - Blue-gray
+  accent: '#3D6A73',   // Lighter accent for highlights
+  lightAccent: '#5A8A95', // Even lighter for text/icons
+};
+
+const tintColorLight = '#0E1C26';
+const tintColorDark = '#5A8A95';
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
+    text: '#0E1C26',
+    background: '#ffffff',
     tint: tintColorLight,
-    icon: '#687076',
+    icon: '#2A454B',
     tabIconDefault: '#687076',
     tabIconSelected: tintColorLight,
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
+    text: '#5A8A95',
+    background: '#0A1419',
     tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
+    icon: '#3D6A73',
+    tabIconDefault: '#2A454B',
     tabIconSelected: tintColorDark,
   },
 };
