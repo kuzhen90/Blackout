@@ -23,6 +23,19 @@ interface CountdownTimerProps {
 const CountdownTimer = ({ initialTime, onComplete, onTick, isPaused }: CountdownTimerProps) => {
   const [timeRemaining, setTimeRemaining] = useState(initialTime);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timeRemainingRef = useRef(timeRemaining);
+  const onCompleteRef = useRef(onComplete);
+  const onTickRef = useRef(onTick);
+
+  // Keep refs updated
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+    onTickRef.current = onTick;
+  }, [onComplete, onTick]);
+
+  useEffect(() => {
+    timeRemainingRef.current = timeRemaining;
+  }, [timeRemaining]);
 
   // Handle timer countdown
   useEffect(() => {
@@ -33,34 +46,31 @@ const CountdownTimer = ({ initialTime, onComplete, onTick, isPaused }: Countdown
     }
 
     // Don't start interval if paused or timer is at 0
-    if (isPaused || timeRemaining <= 0) {
+    if (isPaused || timeRemainingRef.current <= 0) {
       return;
     }
 
     // Start countdown interval
     intervalRef.current = setInterval(() => {
-      setTimeRemaining(prev => {
-        const newTime = prev - 1;
+      const newTime = timeRemainingRef.current - 1;
+      timeRemainingRef.current = newTime;
+      setTimeRemaining(newTime);
 
-        // Call onTick callback
-        if (onTick) {
-          onTick(newTime);
+      // Call onTick callback
+      if (onTickRef.current) {
+        onTickRef.current(newTime);
+      }
+
+      // Check if timer is complete
+      if (newTime <= 0) {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
         }
-
-        // Check if timer is complete
-        if (newTime <= 0) {
-          if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-            intervalRef.current = null;
-          }
-          if (onComplete) {
-            onComplete();
-          }
-          return 0;
+        if (onCompleteRef.current) {
+          onCompleteRef.current();
         }
-
-        return newTime;
-      });
+      }
     }, 1000);
 
     // Cleanup on unmount or when dependencies change
@@ -70,7 +80,7 @@ const CountdownTimer = ({ initialTime, onComplete, onTick, isPaused }: Countdown
         intervalRef.current = null;
       }
     };
-  }, [isPaused, timeRemaining, onComplete, onTick]);
+  }, [isPaused]);
 
   // Reset timer when initialTime changes
   useEffect(() => {
