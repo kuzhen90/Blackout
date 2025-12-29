@@ -4,6 +4,13 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import { GradientColors } from '@/constants/theme';
 import { s, vs, ms } from '@/utils/scaling';
 
+/**
+ * Renders the app header with a horizontal gradient background, the title "Blackout", and three right-aligned action buttons (Profile, Notifications, Settings).
+ *
+ * The buttons currently invoke placeholder handlers that log TODO messages to the console; navigation and functionality are not implemented.
+ *
+ * @returns The header's root JSX element containing the gradient background, title text, and action buttons.
+ */
 export function AppHeader() {
   const colorScheme = useColorScheme();
 

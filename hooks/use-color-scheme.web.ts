@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useColorScheme as useRNColorScheme } from 'react-native';
 
 /**
- * To support static rendering, this value needs to be re-calculated on the client side for web
+ * Provide the active color scheme for web, using a deterministic `"light"` value during initial render to support static rendering.
+ *
+ * @returns The active color scheme — `'light'`, `'dark'`, or `null` — where `'light'` is returned before client-side hydration.
  */
 export function useColorScheme() {
   const [hasHydrated, setHasHydrated] = useState(false);

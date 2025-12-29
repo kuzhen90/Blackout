@@ -9,6 +9,14 @@ import { Colors, GradientColors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { ms } from '@/utils/scaling';
 
+/**
+ * Render the app's top header and a bottom tab navigator with two primary screens.
+ *
+ * The navigator uses custom colors, a haptic-enabled tab button, and icons for the
+ * "Home" and "Explore" tabs.
+ *
+ * @returns The root JSX element containing the header and tab layout
+ */
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 

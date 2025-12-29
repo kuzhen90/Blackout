@@ -21,9 +21,13 @@ const MAPPING = {
 } as IconMapping;
 
 /**
- * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.
- * This ensures a consistent look across platforms, and optimal resource usage.
- * Icon `name`s are based on SF Symbols and require manual mapping to Material Icons.
+ * Render an icon by mapping an SF Symbol name to the corresponding Material Icon.
+ *
+ * @param name - The SF Symbol key to render; must be one of the keys defined in the component's mapping.
+ * @param size - Icon size in pixels (defaults to 24).
+ * @param color - Icon color.
+ * @param style - Optional text-style overrides forwarded to the rendered icon.
+ * @returns The rendered icon element for the mapped Material Icon name.
  */
 export function IconSymbol({
   name,
