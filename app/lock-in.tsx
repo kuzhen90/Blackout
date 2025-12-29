@@ -82,6 +82,14 @@ const CountdownTimer = ({ initialTime, onComplete, onTick, isPaused }: Countdown
   );
 };
 
+/**
+ * Renders the LockIn screen UI that displays a configurable countdown timer with start/pause, reset controls, and a duration picker.
+ *
+ * The component manages timer state (initial duration, pause/completion, selected duration) and coordinates a CountdownTimer and TimerPickerModal.
+ * When the timer completes a completion banner is shown; selecting a new duration resets and pauses the timer.
+ *
+ * @returns The rendered React element for the LockIn screen.
+ */
 export default function LockInScreen() {
   const [initialTime, setInitialTime] = useState(25 * 60); // 25 minutes in seconds
   const [isPaused, setIsPaused] = useState(true);

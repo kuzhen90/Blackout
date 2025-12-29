@@ -9,6 +9,13 @@ export const unstable_settings = {
   anchor: '(tabs)',
 };
 
+/**
+ * Provides the application's root layout, supplying a theme and navigation stack.
+ *
+ * Renders a ThemeProvider (choosing dark or default based on the current color scheme), the app navigation Stack containing the "(tabs)", "lock-in", and "modal" screens, and a StatusBar.
+ *
+ * @returns The root JSX element for the application's layout
+ */
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 

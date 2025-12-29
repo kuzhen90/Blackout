@@ -6,6 +6,13 @@ import { GradientColors } from '@/constants/theme';
 import { s, vs, ms } from '@/utils/scaling';
 import { useRouter } from 'expo-router';
 
+/**
+ * Home screen component that presents a gradient welcome card, a call-to-action button, and an informational gradient section.
+ *
+ * The screen displays a titled welcome card, a tappable gradient button that navigates to '/lock-in', and a short info area — all styled with theme gradients and responsive spacing.
+ *
+ * @returns The JSX element representing the Home screen UI
+ */
 export default function HomeScreen() {
   const router = useRouter();
 
