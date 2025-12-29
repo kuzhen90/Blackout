@@ -1,8 +1,8 @@
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 import { GradientColors } from '@/constants/theme';
-import { s, vs, ms } from '@/utils/scaling';
+import { useColorScheme } from '@/hooks/use-color-scheme';
+import { ms, s, vs } from '@/utils/scaling';
+import { LinearGradient } from 'expo-linear-gradient';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export function AppHeader() {
   const colorScheme = useColorScheme();
